@@ -23,7 +23,11 @@ public class Main {
 //        System.out.println( format.format(before));
         String code = new Main().testParse("!TS");
 //        System.out.println(code);
-        testCharStr();
+//        testCharStr();
+        Map map = new HashMap();
+        map.put(null,"11");
+        map.put(null,"12");
+        System.out.println(map.get(null));
     }
 
 

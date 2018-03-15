@@ -12,7 +12,7 @@ public class MyTask implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("任务开始了 taskNum" + taskNum);
+//        System.out.println("任务开始了 taskNum" + taskNum);
 
         try {
             Thread.currentThread().sleep(4000);
@@ -20,7 +20,7 @@ public class MyTask implements Runnable {
             e.printStackTrace();
         }
 
-        System.out.println("任务结束了" + taskNum);
+//        System.out.println("任务结束了" + taskNum);
 
     }
 }

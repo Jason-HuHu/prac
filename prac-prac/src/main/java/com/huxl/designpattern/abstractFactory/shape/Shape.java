@@ -1,0 +1,9 @@
+package com.huxl.designpattern.abstractFactory.shape;
+
+/**
+ * @author huxl
+ * @createDate 2018/3/21 17:02
+ */
+public interface Shape {
+    void draw();
+}

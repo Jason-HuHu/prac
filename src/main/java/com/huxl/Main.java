@@ -40,8 +40,10 @@ public class Main {
 
 //        testHex();
         Integer b  = 23;
-        testStringChange(b);
-        System.out.println(b);
+//        testStringChange(b);
+//        System.out.println(b);
+//        System.out.println(Long.parseLong(12333123 +""));
+//        System.out.println(args[0] + args[1] + args[2]);
     }
 
 

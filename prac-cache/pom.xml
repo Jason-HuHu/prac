@@ -13,6 +13,8 @@
     <properties>
         <ehcache.version>2.10.1</ehcache.version>
         <junit.version>4.12</junit.version>
+        <jedis.version>2.8.1</jedis.version>
+        <spring.data.redis.version>1.8.10.RELEASE</spring.data.redis.version>
     </properties>
     <dependencies>
         <dependency>
@@ -30,6 +32,17 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.195</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>${spring.data.redis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
         </dependency>
     </dependencies>
 

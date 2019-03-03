@@ -64,10 +64,19 @@ public class BinarySerachTree<T extends Comparable<? super T>> {
         return root == null;
     }
 
+    /**
+     * 判断是否存在
+     * @param x 待确认的节点值
+     * @return 返回是否存在
+     */
     public boolean contains(T x) {
         return contains(x,root);
     }
 
+    /**
+     * 找到树中的最小值
+     * @return 最小值
+     */
     public T findMin(){
         if (isEmpty()) {
             throw new NullPointerException();
@@ -76,6 +85,10 @@ public class BinarySerachTree<T extends Comparable<? super T>> {
         return findMin(root).element;
     }
 
+    /**
+     * 查找最大值
+     * @return 最大值
+     */
     public T findMax(){
         if (isEmpty()) {
             throw new NullPointerException();
@@ -83,8 +96,31 @@ public class BinarySerachTree<T extends Comparable<? super T>> {
         return findMax(root).element;
     }
 
+    /**
+     * 向树中添加元素
+     * @param x 待添加的元素
+     */
     public void insert(T x) {
         root = insert(x,root);
+    }
+
+    /**
+     * 从树中移除元素
+     * @param x 待移除的元素
+     */
+    public void remove(T x) {
+        root = remove(x,root);
+    }
+
+    /**
+     * 打印树
+     */
+    public void printTree(){
+        if (isEmpty()) {
+            System.out.println("Empty tree");
+        }else {
+            printTree(root);
+        }
     }
     /**
      * Internal method to find an item in a subtree
@@ -148,6 +184,12 @@ public class BinarySerachTree<T extends Comparable<? super T>> {
         return root;
     }
 
+    /**
+     * Internal method to insert into a subtree
+     * @param x the item to insert
+     * @param root the node that roots the subtree
+     * @return the new root of the subtree
+     */
     private BinaryNode<T> insert(T x,BinaryNode<T> root) {
         if (root == null) {
             return new BinaryNode<>(x,null,null);
@@ -163,4 +205,47 @@ public class BinarySerachTree<T extends Comparable<? super T>> {
 
         return root;
     }
+
+    /**
+     * Internal method to remove from a subtree
+     * @param x the item to remove
+     * @param root the node that roots the subtree
+     * @return the new root of the subtree
+     */
+    private BinaryNode<T> remove(T x,BinaryNode<T> root) {
+        if (root == null) {
+            //Item not found;do nothing
+            return null;
+        }
+
+        int compareResult = x.compareTo(root.element);
+
+        if (compareResult < 0) {
+            root.left = remove(x,root.left);
+        }else if (compareResult > 0) {
+            root.right = remove(x,root.right);
+        } else if (root.left != null && root.right !=null) {
+            //Two Child
+            root.element = findMin(root.right).element;
+            root.right =remove(root.element,root.right);
+        }else {
+            root = (root.left != null) ? root.left : root.right;
+        }
+
+        return root;
+    }
+
+    /**
+     * Internal method to print a subtree in sorted order
+     * @param t the node that roots the subtree
+     */
+    private void printTree(BinaryNode<T> t){
+        if (t != null) {
+            printTree(t.left);
+            System.out.println(t.element);
+            printTree(t.right);
+        }
+    }
+
+
 }

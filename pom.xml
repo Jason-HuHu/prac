@@ -14,6 +14,7 @@
         <module>prac-cache</module>
       <module>prac-base</module>
         <module>prac-spring</module>
+        <module>prac-advance</module>
     </modules>
     <groupId>com.huxl.prac</groupId>
   <artifactId>prac</artifactId>

@@ -1,8 +1,7 @@
 package com.huxl.collection;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
 /**
  * hashMap实现
@@ -10,16 +9,16 @@ import java.util.Set;
  * @author xiaoh
  * @since 2019/3/18 10:17
  */
-public class HashMap1 implements Map1 {
+public class HashMap1<K,V> extends AbstractMap<K,V> implements Map<K,V>, Serializable,Cloneable {
 
     @Override
     public int size() {
-        return 0;
+        return entrySet().size();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size() == 0;
     }
 
     @Override
@@ -33,17 +32,17 @@ public class HashMap1 implements Map1 {
     }
 
     @Override
-    public Object get(Object key) {
+    public V get(Object key) {
         return null;
     }
 
     @Override
-    public Object put(Object key, Object value) {
+    public V put(Object key, Object value) {
         return null;
     }
 
     @Override
-    public Object remove(Object key) {
+    public V remove(Object key) {
         return null;
     }
 
@@ -58,17 +57,36 @@ public class HashMap1 implements Map1 {
     }
 
     @Override
-    public Set keySet() {
+    public Set<K> keySet() {
         return null;
     }
 
     @Override
-    public Collection values() {
+    public Collection<V> values() {
         return null;
     }
 
     @Override
-    public Set<Entry> entrySet() {
+    public Set<Entry<K,V>> entrySet() {
         return null;
+    }
+
+    final static class Node<K,V> implements Map.Entry<K,V>{
+
+
+        @Override
+        public K getKey() {
+            return null;
+        }
+
+        @Override
+        public V getValue() {
+            return null;
+        }
+
+        @Override
+        public V setValue(V value) {
+            return null;
+        }
     }
 }

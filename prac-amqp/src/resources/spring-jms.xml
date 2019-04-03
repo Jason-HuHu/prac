@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jms="http://www.springframework.org/schema/jms"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+http://www.springframework.org/schema/mvc ">
+	<context:component-scan base-package="com.huxl.mq.jms"/>
+
+	<!--ActiveMQ连接工厂-->
+	<bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616"></property>
+		<property name="userName" value="admin"></property>
+		<property name="password" value="admin"></property>
+	</bean>
+	<!--Spring Caching连接工厂-->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory" ref="amqConnectionFactory"></property>
+		<!--Session缓存数量 -->
+		<property name="sessionCacheSize" value="100"></property>
+	</bean>
+
+	<bean id="jmsTemplate"
+		  class="org.springframework.jms.core.JmsTemplate"
+		  p:connectionFactory-ref="connectionFactory"
+		  p:defaultDestinationName="spittle.alert.queue"
+	/>
+
+	<!--Spring JmsTemplate 的消息生产者 -->
+
+	<!-- 定义JmsTemplate的Queue类型 -->
+	<bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg ref="connectionFactory"/>
+		<!--非pub/sub模型（发布/订阅），即队列模式 -->
+		<property name="pubSubDomain" value="false"/>
+	</bean>
+
+	<!-- 定义JmsTemplate的Topic类型 -->
+	<bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<constructor-arg ref="connectionFactory"/>
+		<!-- pub/sub模型（发布/订阅） -->
+		<property name="pubSubDomain" value="true"/>
+	</bean>
+
+
+	<bean id="spittleHandler" class="com.huxl.mq.jms.SpittleAlertHandler"/>
+	<!--为了把SpittleAlertHandler转变为消息驱动的POJO，需要把这个bean声明为消息监听器-->
+	<jms:listener-container connection-factory="connectionFactory">
+		<jms:listener destination="spitter.alert.queue" ref="spittleHandler" method="handleSpittleAlert"/>
+	</jms:listener-container>
+
+
+</beans>

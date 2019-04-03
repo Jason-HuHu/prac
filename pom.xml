@@ -6,19 +6,36 @@
   <packaging>pom</packaging>
 
   <name>prac-parent</name>
-    <modules>
-        <module>prac-web</module>
-        <module>prac-prac</module>
-        <module>prac-amqp</module>
-        <module>prac-rest</module>
-        <module>prac-cache</module>
-      <module>prac-base</module>
-        <module>prac-spring</module>
-        <module>prac-advance</module>
-    </modules>
-    <groupId>com.huxl.prac</groupId>
+  <groupId>com.huxl.prac</groupId>
   <artifactId>prac</artifactId>
   <version>1.0.0-SNAPSHOT</version>
+
+
+  <modules>
+    <module>prac-web</module>
+    <module>prac-prac</module>
+    <module>prac-amqp</module>
+    <module>prac-rest</module>
+    <module>prac-cache</module>
+    <module>prac-base</module>
+    <module>prac-spring</module>
+    <module>prac-advance</module>
+    <module>prac-log</module>
+    <module>prac-quartz</module>
+    <module>prac-rpc</module>
+    <module>prac-api</module>
+    <module>prac-zookeeper</module>
+  </modules>
+
+
+  <developers>
+    <developer>
+      <name>huxl</name>
+      <email>xiaohucomeon@hotmail.com</email>
+    </developer>
+  </developers>
+
+  <description>实践项目</description>
 
   <build>
     <plugins>

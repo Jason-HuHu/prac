@@ -53,6 +53,7 @@
 - Dubbo
 - Thrift
 - gRPC
+- motan
 ## parc-search
 > 全文检索
 - Solr

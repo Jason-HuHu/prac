@@ -29,7 +29,7 @@ public class EchoServer {
 
     public static void main(String[] args) throws Exception {
         if (args.length != 1) {
-            System.err.println("Usage:" + EchoServer.class.getName() + "<port>");
+            System.err.println("Usage:" + EchoServer.class.getSimpleName() + "<port>");
         }
 
         //Sets the port value(throws a NumberFormatException if the port argements is malformed)

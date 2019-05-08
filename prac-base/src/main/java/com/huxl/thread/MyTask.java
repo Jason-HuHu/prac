@@ -6,6 +6,7 @@ package com.huxl.thread;
  */
 public class MyTask implements Runnable {
     private int taskNum;
+    public MyTask(){}
     public MyTask(int taskNum) {
         this.taskNum = taskNum;
     }

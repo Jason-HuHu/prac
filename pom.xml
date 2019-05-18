@@ -26,6 +26,7 @@
     <module>prac-api</module>
     <module>prac-zookeeper</module>
       <module>prac-search</module>
+      <module>prac-mq</module>
   </modules>
 
 

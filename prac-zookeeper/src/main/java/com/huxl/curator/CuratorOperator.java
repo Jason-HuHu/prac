@@ -21,12 +21,16 @@ public class CuratorOperator {
 
     public static void main(String[] args) {
 
+        CuratorOperator curatorOperator = new CuratorOperator();
+
+
     }
 
-    private void init(){
+    public CuratorOperator(){
 
         /*
             curator 连接zk的策略
+
          */
         RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000,5);
 
@@ -34,6 +38,14 @@ public class CuratorOperator {
                 .connectString(ZK_SERVER_PATH)
                 .sessionTimeoutMs(SESSION_TIMEOUT).retryPolicy(retryPolicy)
                 .build();
+        //启动
+        client.start();
+    }
+
+    public void closeZKClient(){
+        if (client!=null) {
+            client.close();
+        }
     }
 
 }

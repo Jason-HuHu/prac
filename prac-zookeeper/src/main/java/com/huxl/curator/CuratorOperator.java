@@ -4,6 +4,8 @@ import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.curator.retry.RetryNTimes;
+import org.apache.curator.retry.RetryOneTime;
 
 /**
  * Curator基本操作
@@ -26,14 +28,17 @@ public class CuratorOperator {
 
     }
 
-    public CuratorOperator(){
+    private CuratorOperator(){
 
         /*
             curator 连接zk的策略
-
          */
-        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000,5);
-
+        //同步创建zk，原生api是异步的 ExponentialBackoffRetry
+//        RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000,5);
+        //重试N次
+//        RetryPolicy retryPolicy = new RetryNTimes(5,1000);
+        //重试一次
+        RetryPolicy retryPolicy = new RetryOneTime(1000);
         client = CuratorFrameworkFactory.builder()
                 .connectString(ZK_SERVER_PATH)
                 .sessionTimeoutMs(SESSION_TIMEOUT).retryPolicy(retryPolicy)

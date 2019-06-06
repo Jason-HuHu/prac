@@ -3,8 +3,16 @@ package com.huxl.lambda;
 import java.util.Calendar;
 
 public class Person {
+
 	public enum Gender {
-		MALE,FEMALE
+		/**
+		 *
+		 */
+		MALE,
+		/**
+		 *
+		 */
+		FEMALE
 	}
 
 	String name;

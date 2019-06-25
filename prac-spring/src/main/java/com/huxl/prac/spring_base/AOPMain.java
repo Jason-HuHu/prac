@@ -1,6 +1,6 @@
 package com.huxl.prac.spring_base;
 
-import com.huxl.spring_base.service.IMonkeyService;
+import com.huxl.prac.spring_base.service.IMonkeyService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

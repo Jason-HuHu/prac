@@ -1,6 +1,7 @@
 package com.huxl.prac.spring_base.service;
 
-import com.huxl.spring_base.dao.IStudentDAO;
+import com.huxl.prac.spring_base.dao.IStudentDAO;
+import com.huxl.prac.spring_base.dao.IStudentDAO;
 import org.springframework.stereotype.Service;
 
 /**

@@ -8,6 +8,9 @@ package com.huxl.rpc.dubbo.spi.JdkSPIImpl;
 public class JavaSPITest {
 
 
+    /**
+     * src/test com.prac.rpc.dubbo.spi.JavaSPITest#sayHello()
+     */
     public void sayHello(){
 
     }

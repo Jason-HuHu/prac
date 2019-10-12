@@ -22,6 +22,9 @@ public class TestLong {
         System.out.print(ch[j-6]);
         System.out.print(ch[j-5]);
         System.out.print(ch[j-4]);
+        byte a = 126;
+        a += 1;
+        a += 0;
     
     }
 }

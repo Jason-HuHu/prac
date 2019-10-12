@@ -1,4 +1,4 @@
-package com.huxl;
+package com.huxl.interview;
 
 public class StringCompare {
 

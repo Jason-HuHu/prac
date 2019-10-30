@@ -23,7 +23,6 @@ public class SZStorage implements Storage {
                 System.out.println("<"+ Thread.currentThread().getName()+">暂停生产");
                 try {
                     list.wait();
-                    list.notifyAll();
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -32,6 +31,8 @@ public class SZStorage implements Storage {
                 list.push(new Object());
             }
             System.out.println("<"+ Thread.currentThread().getName()+">生产" + num + "件商品后，库存：" + list.size());
+            list.notifyAll();
+
         }
     }
 
@@ -44,8 +45,9 @@ public class SZStorage implements Storage {
                 System.out.println("<"+ Thread.currentThread().getName()+">没有足够的库存!");
 
                 try {
+                    System.out.println("<"+ Thread.currentThread().getName()+">begin wait");
                     list.wait();
-                    list.notifyAll();
+                    System.out.println("<"+ Thread.currentThread().getName()+">end wait");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -58,6 +60,10 @@ public class SZStorage implements Storage {
 
             System.out.println("<"+ Thread.currentThread().getName()+">消费：" + num + "个，现在库存：" + list.size());
             //通知生产
+            System.out.println("<"+ Thread.currentThread().getName()+">notify begin");
+            list.notifyAll();
+            System.out.println("<"+ Thread.currentThread().getName()+">notify end");
+
         }
     }
 }

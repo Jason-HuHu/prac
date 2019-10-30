@@ -11,9 +11,9 @@ package com.huxl.designpattern.observer;
 public class ObserverPatternDemo {
     public static void main(String[] args) {
         Subject subject = new Subject();
-        BinaryObserver binaryObserver = new BinaryObserver(subject);
-        OctalObserver octalObserver = new OctalObserver(subject);
-        HexaObserver hexaObserver = new HexaObserver(subject);
+        new BinaryObserver(subject);
+        new OctalObserver(subject);
+        new HexaObserver(subject);
 
         System.out.println("First state Change: 15");
         subject.setState(15);

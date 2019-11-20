@@ -5,12 +5,21 @@ import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Chapter6Demo {
     public static void main(String[] args) {
 
+        /**
+         * 总结
+         * collect是一个终端操作，它接收的参数是将流中元素累积到汇总结果的各种方式
+         * 预定义收集器包括将流元素规约和汇总到一个 值，例如计算最大值、最小值、平均值
+         * 预定义收集器可以用groupingBy对流中元素进行分组，或用partitioningBy进行分区
+         * 收集器可以高效地复合起来，进行多级多组、分区和归约
+         * 可以实现Collector接口中定义的方法来开发自己的收集器
+         */
         List<Dish> menu = Arrays.asList(
                 new Dish(true,Type.META,1,"1"),
                 new Dish(true,Type.META,1,"2")
@@ -48,6 +57,25 @@ public class Chapter6Demo {
     }
 
 
+    public static boolean isPrime(List<Integer> primes,int candidate) {
+        return primes.stream().noneMatch(i->candidate %i == 0);
+    }
+
+    //给定一个排序列表和一个谓词
+    public static <A> List<A> takeWhile(List<A> list, Predicate<A> p) {
+        int i = 0;
+        for (A item : list) {
+            //检查列表中的当前项目是否满足谓词
+            if (!p.test(item)) {
+                //如果不满足，返回该项目之前的前缀子列表
+                return list.subList(0,i);
+            }
+            i++;
+        }
+        //列表中所有项目都满足谓词，因此返回列表本身
+        return list;
+
+    }
 }
 
 

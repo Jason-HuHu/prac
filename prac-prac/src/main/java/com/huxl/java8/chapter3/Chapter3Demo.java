@@ -36,6 +36,7 @@ public class Chapter3Demo {
         process(r1);
         process(r2);
         process(() -> System.out.println("H"));
+        process(System.out::println);
 
         //正常读取一行:
       /*  String oneLine = processFile();
@@ -129,6 +130,13 @@ public class Chapter3Demo {
         Function<Integer,Integer> h1 = f.compose(g);
         //结果为 4 g(f(x))
         int re = h.apply(1);
+
+        //Lambda表达式等效的方法引用
+        Function<String,Integer> stringIntegerFunction = (String s) -> Integer.parseInt(s);
+        Function<String,Integer> stringIntegerFunction1 = Integer::parseInt;
+
+        BiPredicate<List<String>,String> contains1= (list,element) -> list.contains(element);
+        BiPredicate<List<String>,String> contains2= List::contains;
     }
 
     private static void process(Runnable r) {

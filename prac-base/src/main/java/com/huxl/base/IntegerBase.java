@@ -41,5 +41,18 @@ public class IntegerBase {
          * 包装类的“==”运算在不遇到算数运算的情况下不会自动拆箱
          */
 
+        Integer i01 = 59;
+        int i02 = 59;
+        Integer i03 = Integer.valueOf(59);
+        Integer i04 = new Integer(59);
+
+        System.out.println("i01==i02" + (i01 == i02));//true 值
+        System.out.println("i01==i03" + (i01 == i03));//true 地址
+        System.out.println("i01==i04" + (i01 == i04));//false 地址
+        System.out.println("i02==i03" + (i02 == i03));//true 值
+        System.out.println("i02==i04" + (i02 == i04));//true 值
+        System.out.println("i03==i04" + (i03 == i04)); //false 地址
+
+
     }
 }

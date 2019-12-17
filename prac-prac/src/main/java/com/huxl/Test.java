@@ -13,9 +13,12 @@ import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String str = in.nextLine();
-        
+       String s =  sun.misc.VM.getSavedProperty("java.lang.Integer.IntegerCache.high");
+       System.setProperty("java.lang.Integer.IntegerCache.high","128");
+        System.out.println(s);
+       int a = 251;
+       Integer b = 128;
+        System.out.println((a == b));
     }
-    
+
 }

@@ -9,5 +9,6 @@ package com.huxl.dynamicproxy;
 
 
 public interface CountService {
+
     int count();
 }

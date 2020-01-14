@@ -10,6 +10,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import java.net.InetSocketAddress;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -60,8 +61,7 @@ public class EchoServer {
                             ch.pipeline().addLast(serverHandler);
                         }
                     });
-
-            //6.异步地绑定服务器，调用sync()方法阻塞等待直到绑定完成
+           //6.异步地绑定服务器，调用sync()方法阻塞等待直到绑定完成
             ChannelFuture future = b.bind().sync();
             //7.获取channel的CloseFuture，并且阻塞当前线程直到它完成
             future.channel().closeFuture().sync();

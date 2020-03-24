@@ -82,7 +82,7 @@
      <jackson.version>1.8.1</jackson.version>
      <spring-security.version>4.1.0.RELEASE</spring-security.version>
      <mysql.version>5.1.22</mysql.version>
-     <netty.version>4.1.31.Final</netty.version>
+     <netty.version>4.1.42.Final</netty.version>
    </properties>
   <dependencyManagement>
     <dependencies>

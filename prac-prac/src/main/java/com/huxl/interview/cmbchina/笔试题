@@ -1,0 +1,5 @@
+1.写sql，分数表结构定义 name course score ，求每门课程分数都大于80分的学生姓名
+select name from scores group by name having min(score) >80;
+2.找一个字符串中第一个只出现一次的字母并返回它的下标（0开始）,没有的话返回-1；
+
+3.求二叉树的最大深度。

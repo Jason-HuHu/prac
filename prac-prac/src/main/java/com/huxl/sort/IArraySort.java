@@ -10,6 +10,12 @@ public interface IArraySort {
         return sort(array,true);
     }
 
+    default void swap(int[] array,int a,int b){
+        array[a] = array[a] + array[b];
+        array[b] = array[a] - array[b];
+        array[a] = array[a] - array[b];
+    }
+
     /**
      * 对给定的数组排序
      * @param array 原数组
